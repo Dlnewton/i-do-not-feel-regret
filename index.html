@@ -13,6 +13,7 @@
       --muted: #b5b5c0;
       --accent: #7cf0c8;
       --card: #16161c;
+      --glow: #7cf0c8;
     }
 
     * { box-sizing: border-box; }
@@ -63,10 +64,21 @@
       border-radius: 12px;
       object-fit: cover;
       cursor: pointer;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .artwork img:hover { transform: scale(1.02); }
+    /* Hover effects */
+    /* Big cover scale effect already */
+    .artwork a:first-child img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 15px var(--glow);
+    }
+
+    /* Small promo photo glow effect */
+    .artwork a:last-child img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px var(--glow);
+    }
 
     @media (max-width: 700px) {
       .artwork { grid-template-columns: 1fr; }
@@ -130,6 +142,28 @@
       transform: translateY(-2px);
     }
 
+    /* QR CODE */
+    .qr {
+      grid-column: 1 / -1;
+      background: var(--card);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .qr img {
+      width: 180px;
+      max-width: 100%;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .qr img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px var(--glow);
+    }
+
     footer {
       grid-column: 1 / -1;
       text-align: center;
@@ -151,12 +185,14 @@
 
     <!-- PHOTOS -->
     <section class="artwork">
-      <!-- BIG COVER CLICKABLE -->
+      <!-- BIG COVER CLICKABLE to Spotify -->
       <a href="https://open.spotify.com/album/1znC4djLKxbsETtLG8RyOz" target="_blank">
         <img src="images/cover.jpg" alt="I Do Not Feel Regret album cover">
       </a>
-      <!-- SMALL PROMO PHOTO -->
-      <img src="images/photo2.jpg" alt="Mr. G promo photo">
+      <!-- SMALL PROMO PHOTO CLICKABLE to Facebook -->
+      <a href="https://www.facebook.com/profile.php?id=61586695948282" target="_blank">
+        <img src="images/photo2.jpg" alt="Mr. G promo photo">
+      </a>
     </section>
 
     <!-- SPOTIFY PLAYER -->
@@ -184,6 +220,14 @@
       <a href="https://play.anghami.com/album/1077554381" target="_blank">Anghami</a>
     </section>
 
+    <!-- QR CODE -->
+    <section class="qr">
+      <h3>Scan or Tap to Listen on Spotify</h3>
+      <a href="https://open.spotify.com/album/1znC4djLKxbsETtLG8RyOz" target="_blank">
+        <img src="images/spotify-qr.png" alt="Spotify QR code for I Do Not Feel Regret">
+      </a>
+    </section>
+
     <footer>
       © <span id="year"></span> Mr. G
     </footer>
@@ -194,4 +238,3 @@
   </script>
 </body>
 </html>
-
